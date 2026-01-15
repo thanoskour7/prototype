@@ -11,7 +11,6 @@ session_destroy();
     <title>Αποσύνδεση | University of Larissa</title>
     <link rel="stylesheet" href="style.css">
     <meta http-equiv="refresh" content="3;url=index.php">
-    <script src="https://kit.fontawesome.com/a2e0e6ad11.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
