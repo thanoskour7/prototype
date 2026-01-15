@@ -1,6 +1,6 @@
 --Δημιουργία βάσης δεδομένων
-CREATE DATABASE IF NOT EXISTS university_db;
-USE university_db;
+CREATE DATABASE IF NOT EXISTS university_database;
+USE university_database;
 
 -- Πίνακας ρόλων
 CREATE TABLE IF NOT EXISTS roles (
