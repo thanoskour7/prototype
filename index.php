@@ -7,7 +7,13 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>University of Larissa</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- CSS Αρχεία - Φορτώνουμε τα styles σε σειρά -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Leaflet Map CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 <body>
@@ -39,7 +45,7 @@ session_start();
             Οι φοιτητές και οι καθηγητές απολαμβάνουν ένα σύγχρονο περιβάλλον μάθησης,
             με υποδομές που υποστηρίζουν την ακαδημαϊκή και προσωπική τους εξέλιξη.
         </p>
-        <img src="pictures/campus.jpg" alt="Campus Image">
+        <img src="pictures/lar.jpg" alt="Campus Image">
     </section>
 
     <!--MAP SECTION-->
@@ -57,13 +63,23 @@ session_start();
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
         // Leaflet Map Configuration
-        var map = L.map('campusMap').setView([39.6370, 22.4201], 16);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; OpenStreetMap contributors'
-        }).addTo(map);
-        L.marker([39.6370, 22.4201]).addTo(map)
-            .bindPopup('<b>University of Larissa</b><br>Παπαναστασίου 28, Λάρισα')
-            .openPopup();
+        // Περιμένουμε να φορτωθεί η σελίδα πριν δημιουργήσουμε τον χάρτη
+        window.addEventListener('load', function() {
+            var map = L.map('campusMap').setView([39.6370, 22.4201], 16);
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
+            
+            L.marker([39.6370, 22.4201]).addTo(map)
+                .bindPopup('<b>University of Larissa</b><br>Παπαναστασίου 28, Λάρισα')
+                .openPopup();
+            
+            // Ανανεώνουμε το μέγεθος του χάρτη για να φαίνεται σωστά
+            setTimeout(function() {
+                map.invalidateSize();
+            }, 100);
+        });
     </script>
 </body>
 </html>

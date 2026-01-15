@@ -1,0 +1,175 @@
+/*
+   Αυτό το αρχείο περιέχει τα styles για τις 
+   φόρμες σύνδεσης και εγγραφής.
+*/
+
+/* 
+   Το container που περιέχει τη φόρμα.
+   Χρησιμοποιείται για να κεντράρει τη φόρμα
+   στη μέση της σελίδας.
+*/
+.page-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #004080, #0066cc);
+    padding: 40px 10px;
+}
+
+/* 
+   Η κάρτα που περιέχει τη φόρμα.
+   Είναι το λευκό κουτί με τη φόρμα μέσα.
+*/
+.form-card {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    width: 90%;
+    max-width: 420px;
+    padding: 40px 30px;
+    text-align: center;
+}
+
+/* 
+   Ο τίτλος μέσα στη φόρμα (π.χ. "Σύνδεση Χρήστη").
+*/
+.form-card h2 {
+    color: #003366;
+    margin-bottom: 25px;
+}
+
+/* 
+   Η φόρμα μέσα στην κάρτα.
+   Τα πεδία είναι τοποθετημένα το ένα κάτω από το άλλο.
+*/
+.form-card form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 
+   Κάθε ομάδα πεδίων (input group).
+   Περιέχει ένα input field και ένα εικονίδιο.
+*/
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* 
+   Τα input fields και τα select dropdowns.
+   Αυτά είναι τα πεδία που γράφει ο χρήστης.
+*/
+.input-group input, .input-group select {
+    width: 100%;
+    padding: 12px 40px 12px 15px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+}
+
+/* 
+   Όταν το input field έχει focus (ο χρήστης 
+   κάνει κλικ ή πληκτρολογεί μέσα σε αυτό),
+   αλλάζει το χρώμα του border.
+*/
+.input-group input:focus, .input-group select:focus {
+    border-color: #0066cc;
+    box-shadow: 0 0 6px rgba(0,102,204,0.3);
+    outline: none;
+}
+
+/* 
+   Τα εικονίδια (icons) μέσα στα input fields
+   (π.χ. το εικονίδιο email, lock, κλπ).
+*/
+.input-group i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+}
+
+/* 
+   Το κουμπί υποβολής της φόρμας.
+*/
+button {
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background-color: #0059b3;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+/* 
+   Όταν περνάμε το ποντίκι πάνω από το κουμπί,
+   αλλάζει το χρώμα του background.
+*/
+button:hover {
+    background-color: #003f80;
+}
+
+/* 
+   Μηνύματα σφάλματος (error messages).
+   Εμφανίζονται με κόκκινο χρώμα.
+*/
+p.error {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* 
+   Ο σύνδεσμος για εγγραφή/σύνδεση κάτω από τη φόρμα.
+*/
+.register-link {
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+
+/* 
+   Ο σύνδεσμος μέσα στο register-link.
+*/
+.register-link a {
+    color: #004080;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* 
+   Όταν περνάμε το ποντίκι πάνω από το σύνδεσμο,
+   εμφανίζεται υπογράμμιση.
+*/
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* 
+   Ειδικά styles για τη σελίδα logout.
+   Χρησιμοποιείται για να εμφανίσει το μήνυμα
+   επιτυχούς αποσύνδεσης.
+*/
+.form-card i {
+    font-size: 50px;
+    color: #0059b3;
+    margin-bottom: 15px;
+}
+
+/* 
+   Ο σύνδεσμος επιστροφής στη σελίδα logout.
+*/
+.form-card a {
+    color: #004080;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.form-card a:hover {
+    text-decoration: underline;
+}
+

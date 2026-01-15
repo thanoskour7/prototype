@@ -1,0 +1,20 @@
+/* 
+   FOOTER 
+   Αυτό το αρχείο περιέχει τα styles για το 
+   κάτω μέρος της σελίδας (footer).
+*/
+
+/* 
+   Το footer είναι το κάτω μέρος της σελίδας
+   που συνήθως περιέχει πληροφορίες copyright.
+*/
+footer {
+    text-align: center;
+    padding: 15px 10px;
+    background-color: #003366;
+    color: #fff;
+    margin-top: auto;
+    font-size: 0.9em;
+}
+
+
