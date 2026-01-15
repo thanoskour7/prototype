@@ -1,0 +1,93 @@
+/*
+   DASHBOARD 
+
+   Αυτό το αρχείο περιέχει τα styles για τις 
+   κάρτες που εμφανίζονται στα dashboards
+   (φοιτητή και καθηγητή).
+*/
+
+/* 
+   Το grid που περιέχει τις κάρτες.
+   Στο desktop: 3 στήλες με καθορισμένο πλάτος
+   Στο tablet: 2 στήλες
+   Στο mobile: 1 στήλη
+*/
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 
+   Στο tablet (μέχρι 1024px), 2 στήλες
+*/
+@media (max-width: 1024px) {
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 
+   Στο mobile (μέχρι 768px), 1 στήλη
+*/
+@media (max-width: 768px) {
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 
+   Κάθε κάρτα είναι ένα μικρό κουτί με 
+   πληροφορίες (π.χ. "Προφίλ", "Μαθήματα").
+   Καθορίζουμε ένα καλό ύψος και πλάτος.
+*/
+.card {
+    background-color: #f8faff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* 
+   Όταν μια κάρτα είναι clickable (μέσα σε link),
+   δεν θέλουμε να αλλάζει το χρώμα του link.
+*/
+.card-grid a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 
+   Όταν περνάμε το ποντίκι πάνω από μια κάρτα,
+   ανεβαίνει λίγο προς τα πάνω.
+*/
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+/* 
+   Ο τίτλος μέσα σε κάθε κάρτα.
+*/
+.card h3 {
+    color: #0059b3;
+}
+
+/* 
+   Το κείμενο μέσα σε κάθε κάρτα.
+*/
+.card p {
+    color: #555;
+    font-size: 0.95em;
+}
+

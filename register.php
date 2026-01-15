@@ -31,7 +31,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Εγγραφή | University of Larissa</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- CSS Αρχεία - Φορτώνουμε τα styles σε σειρά -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/responsive.css">
     <script src="https://kit.fontawesome.com/a2e0e6ad11.js" crossorigin="anonymous"></script>
 </head>
 <body>

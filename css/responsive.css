@@ -1,0 +1,247 @@
+/* 
+   RESPONSIVE CSS Για διαφορετικα μεγέθη οθονων
+
+   Αυτό το αρχείο περιέχει τα styles που 
+   αλλάζουν για διαφορετικά μεγέθη οθονών. */
+
+/* 
+   Μεγάλες οθόνες (desktop) - 1200px και πάνω
+   Δεν χρειάζονται ειδικές ρυθμίσεις, 
+   χρησιμοποιούνται τα default styles.
+*/
+
+/* 
+   Μέσες οθόνες (laptop) - 992px έως 1199px
+*/
+@media (max-width: 1199px) {
+    section {
+        max-width: 95%;
+    }
+    
+    #map {
+        max-width: 95%;
+    }
+    
+    #campusMap {
+        height: 450px;
+    }
+}
+
+/* 
+  768px έως 991px
+*/
+@media (max-width: 991px) {
+    header h1 {
+        font-size: 1.75em;
+    }
+    
+    #banner {
+        height: 250px;
+        font-size: 1.75em;
+    }
+    
+    section {
+        max-width: 95%;
+        padding: 30px 15px;
+    }
+    
+    section img {
+        width: 100%;
+    }
+    
+    #map {
+        max-width: 95%;
+        padding: 30px 15px;
+    }
+    
+    #campusMap {
+        height: 400px;
+    }
+}
+
+/* 
+   576px έως 767px
+*/
+@media (max-width: 767px) {
+    header {
+        padding: 15px 10px;
+    }
+    
+    header h1 {
+        font-size: 1.5em;
+    }
+    
+    nav {
+        margin-top: 8px;
+    }
+    
+    nav a, nav span {
+        margin: 0 5px;
+        padding: 6px 12px;
+        font-size: 0.9em;
+        display: inline-block;
+    }
+    
+    #banner {
+        height: 200px;
+        font-size: 1.5em;
+        padding: 0 15px;
+    }
+    
+    section {
+        margin: 15px 10px;
+        padding: 25px 15px;
+        max-width: calc(100% - 20px);
+    }
+    
+    section h2 {
+        font-size: 1.3em;
+    }
+    
+    section img {
+        width: 100%;
+        margin: 15px 0;
+    }
+    
+    #map {
+        margin: 15px 10px;
+        padding: 25px 15px;
+        max-width: calc(100% - 20px);
+    }
+    
+    #campusMap {
+        height: 350px;
+        margin: 15px auto 0;
+    }
+    
+    form {
+        width: 100%;
+    }
+    
+    .form-card {
+        padding: 25px 15px;
+        max-width: 95%;
+    }
+}
+
+/* 
+   μέχρι 575px
+*/
+@media (max-width: 575px) {
+    header {
+        padding: 12px 8px;
+    }
+    
+    header h1 {
+        font-size: 1.3em;
+    }
+    
+    nav {
+        margin-top: 8px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+    }
+    
+    nav a, nav span {
+        margin: 2px;
+        padding: 5px 10px;
+        font-size: 0.85em;
+    }
+    
+    #banner {
+        height: 150px;
+        font-size: 1.2em;
+        padding: 0 10px;
+        text-align: center;
+    }
+    
+    section {
+        margin: 10px 5px;
+        padding: 20px 12px;
+        max-width: calc(100% - 10px);
+        border-radius: 10px;
+    }
+    
+    section h2 {
+        font-size: 1.2em;
+        margin-bottom: 15px;
+    }
+    
+    section p {
+        font-size: 0.95em;
+        line-height: 1.5;
+    }
+    
+    section img {
+        width: 100%;
+        margin: 15px 0;
+        border-radius: 10px;
+    }
+    
+    #map {
+        margin: 10px 5px;
+        padding: 20px 12px;
+        max-width: calc(100% - 10px);
+        border-radius: 10px;
+    }
+    
+    #campusMap {
+        height: 300px;
+        min-height: 250px;
+        margin: 10px auto 0;
+        border-radius: 10px;
+    }
+    
+    .form-card {
+        padding: 20px 12px;
+        max-width: 100%;
+        margin: 10px;
+    }
+    
+    .input-group input, 
+    .input-group select {
+        font-size: 0.95em;
+        padding: 10px 35px 10px 12px;
+    }
+    
+    button {
+        padding: 10px;
+        font-size: 0.95em;
+    }
+}
+
+/* 
+   μέχρι 375px
+*/
+@media (max-width: 375px) {
+    header h1 {
+        font-size: 1.1em;
+    }
+    
+    nav a, nav span {
+        font-size: 0.8em;
+        padding: 4px 8px;
+    }
+    
+    #banner {
+        height: 120px;
+        font-size: 1em;
+    }
+    
+    section {
+        padding: 15px 10px;
+    }
+    
+    section h2 {
+        font-size: 1.1em;
+    }
+    
+    #campusMap {
+        height: 250px;
+        min-height: 200px;
+    }
+}
+
+

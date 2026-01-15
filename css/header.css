@@ -1,0 +1,58 @@
+/* 
+   Αυτό το αρχείο περιέχει τα styles για το 
+   επάνω μέρος της σελίδας (header) και το 
+   μενού πλοήγησης (navigation).
+ */
+
+/* 
+   Το header είναι το επάνω μέρος της σελίδας
+   με το όνομα του πανεπιστημίου και το μενού.
+*/
+header {
+    background: linear-gradient(135deg, #003366, #0059b3);
+    color: #fff;
+    padding: 20px 10px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* 
+   Ο τίτλος μέσα στο header (π.χ. "University of Larissa").
+*/
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+/* 
+   Το navigation είναι το μενού με τους συνδέσμους
+   (π.χ. Σύνδεση, Εγγραφή, Αποσύνδεση).
+*/
+nav {
+    margin-top: 10px;
+}
+
+/* 
+   Οι σύνδεσμοι και το κείμενο μέσα στο navigation.
+*/
+nav a, nav span {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-weight: 500;
+}
+
+/* 
+   Όταν περνάμε το ποντίκι πάνω από έναν σύνδεσμο,
+   αλλάζει το χρώμα του background.
+*/
+nav a:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+
