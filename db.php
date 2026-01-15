@@ -8,7 +8,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "university_db";
+$dbname = "university_database";
 
 // Δημιουργια συνδεσης
 $conn = new mysqli($servername, $username, $password, $dbname);
