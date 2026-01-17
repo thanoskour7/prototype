@@ -1,7 +1,7 @@
 <?php
 /*
  * Dashboard για Καθηγητές
- * Περιέχει όλες τις λειτουργίες: Μαθήματα, Φοιτητές, Ανακοινώσεις
+ * Περιέχει όλες τις λειτουργίες: Μαθήματα, Φοιτητές
  */
 session_start();
 require 'db.php';
@@ -70,31 +70,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_grade'])) {
     }
 }
 
-//  ΑΝΑΚΟΙΝΩΣΕΙΣ 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['create_announcement'])) {
-    $course_id = $_POST['course_id'] ?: null;
-    $title = $_POST['title'];
-    $content = $_POST['content'];
-    
-    $stmt = $conn->prepare("INSERT INTO announcements (course_id, professor_id, title, content) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("iiss", $course_id, $professor_id, $title, $content);
-    if($stmt->execute()) {
-        $message = "Η ανακοίνωση δημιουργήθηκε επιτυχώς!";
-    } else {
-        $error = "Σφάλμα κατά τη δημιουργία της ανακοίνωσης.";
-    }
-}
-
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_announcement'])) {
-    $announcement_id = $_POST['announcement_id'];
-    $stmt = $conn->prepare("DELETE FROM announcements WHERE id=? AND professor_id=?");
-    $stmt->bind_param("ii", $announcement_id, $professor_id);
-    if($stmt->execute()) {
-        $message = "Η ανακοίνωση διαγράφηκε επιτυχώς!";
-    } else {
-        $error = "Σφάλμα κατά τη διαγραφή της ανακοίνωσης.";
-    }
-}
 
 // ΛΗΨΗ ΔΕΔΟΜΕΝΩΝ
 // Μαθήματα - Ο καθηγητής βλέπει ΟΛΑ τα courses (όχι μόνο αυτά που έχει δημιουργήσει)
@@ -125,16 +100,6 @@ if ($selected_course) {
     $students_result = $students_stmt->get_result();
 }
 
-// Ανακοινώσεις
-$announcements_query = "SELECT a.*, c.title as course_title
-                        FROM announcements a
-                        LEFT JOIN courses c ON a.course_id = c.id
-                        WHERE a.professor_id = ?
-                        ORDER BY a.created_at DESC";
-$announcements_stmt = $conn->prepare($announcements_query);
-$announcements_stmt->bind_param("i", $professor_id);
-$announcements_stmt->execute();
-$announcements_result = $announcements_stmt->get_result();
 ?>
 
 <!DOCTYPE html>
@@ -215,8 +180,6 @@ $announcements_result = $announcements_stmt->get_result();
                     onclick="showTab('courses', this)">Μαθήματα</button>
             <button class="tab-button <?php echo $active_tab == 'students' ? 'active' : ''; ?>" 
                     onclick="showTab('students', this)">Φοιτητές</button>
-            <button class="tab-button <?php echo $active_tab == 'announcements' ? 'active' : ''; ?>" 
-                    onclick="showTab('announcements', this)">Ανακοινώσεις</button>
         </div>
 
         <!-- Tab: Μαθήματα -->
@@ -348,66 +311,6 @@ $announcements_result = $announcements_stmt->get_result();
             <?php endif; ?>
         </div>
 
-        <!-- Tab: Ανακοινώσεις -->
-        <div id="tab-announcements" class="tab-content <?php echo $active_tab == 'announcements' ? 'active' : ''; ?>">
-            <h3>Διαχείριση Ανακοινώσεων</h3>
-            
-            <div class="form-card" style="max-width: 600px; margin: 20px auto;">
-                <h4>Δημιουργία Νέας Ανακοίνωσης</h4>
-                <form method="POST">
-                    <div class="input-group">
-                        <select name="course_id" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ccc; font-size: 1em;">
-                            <option value="">-- Γενική ανακοίνωση (όχι για συγκεκριμένο μάθημα) --</option>
-                            <?php 
-                            // Reset pointer για το dropdown των ανακοινώσεων
-                            if($courses_dropdown_result->num_rows > 0) {
-                                $courses_dropdown_result->data_seek(0);
-                                while($course = $courses_dropdown_result->fetch_assoc()): ?>
-                                    <option value="<?php echo $course['id']; ?>">
-                                        <?php echo htmlspecialchars($course['title']); ?>
-                                    </option>
-                                <?php endwhile;
-                            } ?>
-                        </select>
-                    </div>
-                    <div class="input-group">
-                        <input type="text" name="title" placeholder="Τίτλος Ανακοίνωσης" required>
-                    </div>
-                    <div class="input-group">
-                        <textarea name="content" placeholder="Περιεχόμενο Ανακοίνωσης" rows="6" 
-                                  style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ccc; font-size: 1em; font-family: inherit;" required></textarea>
-                    </div>
-                    <button type="submit" name="create_announcement">Δημιουργία Ανακοίνωσης</button>
-                </form>
-            </div>
-
-            <h4 style="margin-top: 40px;">Οι Ανακοινώσεις μου</h4>
-            <div class="card-grid">
-                <?php if($announcements_result->num_rows > 0): ?>
-                    <?php while($announcement = $announcements_result->fetch_assoc()): ?>
-                        <div class="card">
-                            <h3><?php echo htmlspecialchars($announcement['title']); ?></h3>
-                            <?php if($announcement['course_title']): ?>
-                                <p><strong>Μάθημα:</strong> <?php echo htmlspecialchars($announcement['course_title']); ?></p>
-                            <?php else: ?>
-                                <p><strong>Τύπος:</strong> Γενική ανακοίνωση</p>
-                            <?php endif; ?>
-                            <p><?php echo nl2br(htmlspecialchars($announcement['content'])); ?></p>
-                            <p style="font-size: 0.9em; color: #666; margin-top: 15px;">
-                                <?php echo date('d/m/Y H:i', strtotime($announcement['created_at'])); ?>
-                            </p>
-                            
-                            <form method="POST" style="margin-top: 15px;" onsubmit="return confirm('Είστε σίγουρος ότι θέλετε να διαγράψετε αυτή την ανακοίνωση;');">
-                                <input type="hidden" name="announcement_id" value="<?php echo $announcement['id']; ?>">
-                                <button type="submit" name="delete_announcement" style="background-color: #dc3545;">Διαγραφή</button>
-                            </form>
-                        </div>
-                    <?php endwhile; ?>
-                <?php else: ?>
-                    <p>Δεν έχετε δημιουργήσει ανακοινώσεις ακόμα.</p>
-                <?php endif; ?>
-            </div>
-        </div>
     </section>
 
     <footer>

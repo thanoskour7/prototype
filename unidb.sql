@@ -55,17 +55,6 @@ CREATE TABLE IF NOT EXISTS grades (
     FOREIGN KEY (course_id) REFERENCES courses(id)
 );
 
--- Πίνακας ανακοινώσεων
-CREATE TABLE IF NOT EXISTS announcements (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    course_id INT,
-    professor_id INT NOT NULL,
-    title VARCHAR(200) NOT NULL,
-    content TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (course_id) REFERENCES courses(id),
-    FOREIGN KEY (professor_id) REFERENCES users(id)
-);
 
 -- Δημιουργία default καθηγητή για τα premade courses
 -- Ο default καθηγητής έχει:
